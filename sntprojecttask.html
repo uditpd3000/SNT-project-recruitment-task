@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My planner</title>
+    <style>
+      table, td, th {
+        padding: 15px;
+        border: 1px solid black;
+      }
+      
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(223, 159, 122);
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: cornsilk;
+      }
+      td {
+        text-align: center;
+      }
+      .top {
+        text-align: center;
+        font-size: large;
+      }
+      .button,.button1 {
+        border-radius: 12px;
+        background-color: beige;
+        padding: auto;
+        text-align: center;
+        cursor: pointer;
+        width: 100 px;
+        height: 30 px;
+
+      }
+      .button1{margin-left: 580px; width: 150px;height: 50px; background-color: blanchedalmond;}
+      
+      tr:hover {background-color: #ddd4d4;}
+      
+      
+      </style>
+  </head>
+<body>
+  <h2 class="top">Let's plan it smartly</h3>
+
+<div class="hemlo">
+    <form>
+        <label for="task" >Tell me the task</label><br>
+
+        <input type="text" id="task" name="task"value="" placeholder="What's your plan :)"><br><br>
+        <label for="time">When you are gonna do this</label><br>
+        <input type="time" id="timestart" name="timestart"value="" ><br><br>
+        <label for="time1">Till when</label><br>
+        <input type="time" id="timeend" name="timeend" value=""><br><br>
+        <button type="button" id="submit" class="button">Add task</button><br>
+        
+    </form><br><br>
+
+    <table class="table">
+      <thead class="thead" id="myplanner">
+        <tr>
+          <th scope="col">When to start </th>
+          <th scope="col">When to complete the task</th>
+          <th scope="col">What to do</th>
+          
+        
+        </tr>
+      </thead>
+     
+    </table><br><br><br>
+    </div>
+    <centre><button type="button" id="madeplanner" class="button1">All added?</button></centre>
+    <script>
+     var getting= document.getElementById("submit");
+getting.addEventListener("click",maketask);
+var taskno=1;
+function maketask()
+{
+    var task= document.getElementById("task").value;
+    var timestart= document.getElementById("timestart").value;
+    var timeend = document.getElementById("timeend").value;
+    
+
+
+    if(!task)
+    {
+        alert("No task added...... please do something")
+        return;
+    }
+    if(!timeend || !timestart)
+    {
+      alert("Please add a time period for your task")
+    }
+    if(timeend==timestart)
+    {
+        alert("looks like you are in hurry...atleast take 1 min for task")
+        return;
+    }
+    var myplanner= document.getElementById("myplanner");
+    var mytask= myplanner.insertRow(taskno);
+    var a= mytask.insertCell(0);
+    var b= mytask.insertCell(1);
+    var c= mytask.insertCell(2);
+    a.innerHTML = timestart;
+    b.innerHTML = timeend;
+    c.innerHTML = task;
+    taskno +=1;
+    task.reset();
+    
+}
+var madeplanner= document.getElementById("madeplanner");
+madeplanner.addEventListener("click",sendalert);
+function sendalert()
+{
+    alert("Yo buddy, you have done and now stick to this...if you can:)")
+}
+    
+    </script>
+
+
+</body>
+</html>
